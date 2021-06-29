@@ -14,7 +14,6 @@ import pyautogui
 import requests
 import os
 import pyjokes
-from PIL import ImageGrab
 from datetime import datetime
 
 time_now=datetime.now()
@@ -51,7 +50,6 @@ def takeCommand():
        
         
         print("Listnening.....")
-        # r.pause_threshold = 1
         audio= r.listen(source)
 
     try:
@@ -67,7 +65,7 @@ def takeCommand():
 
 def sendEmail(to, subject, content):
 
-    sender=yagmail.SMTP('samratb601@gmail.com')
+    sender=yagmail.SMTP('yourgmail@gmail.com') #put your gmail
     sender.send(to,subject,content)
 
 def instant_msgTo_Whatsapp(person_name , my_msg):
@@ -78,14 +76,14 @@ def instant_msgTo_Whatsapp(person_name , my_msg):
     print(pyautogui.position())
 
     # click on search bar
-    pyautogui.click(148,153)
+    pyautogui.click(148,153)  #this ( x,y) co_ords can different for your computer
     pyautogui.typewrite(person_name)
 
 
     time.sleep(8)
 
     #click on person 
-    pyautogui.click(165,271)
+    pyautogui.click(165,271)#this ( x,y) co_ords can different for your computer
 
     time.sleep(5)
 
