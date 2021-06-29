@@ -92,7 +92,7 @@ def instant_msgTo_Whatsapp(person_name , my_msg):
     pyautogui.typewrite(my_msg)
 
     time.sleep(3)
-    pyautogui.click('Enter') # click on Send button
+    pyautogui.press('Enter') # click on Send button
 
 if __name__ == "__main__":
     wishMe()
