@@ -46,8 +46,6 @@ def wishMe():
 def takeCommand():
     r=sr.Recognizer()
     with sr.Microphone() as source:
-       
-        
         print("Listnening.....")
         audio= r.listen(source)
 
@@ -96,6 +94,7 @@ if __name__ == "__main__":
 
     while True:
         query  =takeCommand().lower()
+        
         if 'wikipedia' in query:
             speak("searching wikipidia....")
             query= query.replace("wikipedia","")
@@ -103,21 +102,26 @@ if __name__ == "__main__":
             speak("according to wikipedia")
             print(results)
             speak(results)
+            
         elif 'search' in query:
             q = query.replace("search", "")
             pywhatkit.search(q)
+            
         elif 'open youtube' in query:
             webbrowser.open("youtube.com")
+            
         elif 'open google' in query:
             webbrowser.open("google.com")
+            
         elif 'open stackoverflow' in query:
             webbrowser.open("stackoverflow.com")
 
-        # elif 'play music' in query:
-        #     music_dir=#select a music directory path
-        #     songs= os.listdir(music_dir) 
-        # #     print(songs) 
-        # os.startfile(os.path.join(music_dir,songs[0]))
+        elif 'play music' in query:
+            music_dir=#select a music directory path
+            songs= os.listdir(music_dir) 
+            print(songs) 
+            os.startfile(os.path.join(music_dir,songs[0]))
+        
         elif 'the time' in query:
             startTime=datetime.datetime.now().strftime("%I:%M: %p")
             speak(f"sir, the time is {startTime}")
@@ -133,14 +137,18 @@ if __name__ == "__main__":
         elif 'open excel' in query:
             codepath=r"C:\Program Files (x86)\Microsoft Office\root\Office16\EXCEL.EXE"
             os.startfile(codepath)
+            
         elif 'play' in query:
             song= query.replace('play', '')
             speak('Playing...' + song)
             pywhatkit.playonyt(song)
+            
         elif 'joke' in query:
 
-            print(speak(pyjokes.get_joke()))
-
+            joke = pyjokes.get_joke()
+            print(joke)
+            speak(joke)
+            
         elif 'send mail' in query:
             
             try:
@@ -152,11 +160,13 @@ if __name__ == "__main__":
                 cnt=takeCommand()
                 sendEmail(to=reciver, subject=sbj ,content=cnt)
                 speak("email has been sent succesfully!!")
+                
             except Exception as e:
                 print(e)
                 speak("sorry my friend samrat . I am not able to send this email")
 
         elif 'whatsapp message' in query:
+            
             try:
                 speak("type the name below=>")
                 person_name = input('Enter The Person Name Whom You Want To Send A Message: ')
