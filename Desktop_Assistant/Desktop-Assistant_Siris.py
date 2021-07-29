@@ -1,7 +1,6 @@
-from email import message
-from email.mime import text
-from typing import Text
 import pyttsx3
+from email import message
+from typing import Text
 from pywhatkit.help import sendwhatmsg
 import speech_recognition as sr
 import wikipedia
@@ -104,6 +103,9 @@ if __name__ == "__main__":
             speak("according to wikipedia")
             print(results)
             speak(results)
+        elif 'search' in query:
+            q = query.replace("search", "")
+            pywhatkit.search(q)
         elif 'open youtube' in query:
             webbrowser.open("youtube.com")
         elif 'open google' in query:
@@ -160,21 +162,10 @@ if __name__ == "__main__":
                 person_name = input('Enter The Person Name Whom You Want To Send A Message: ')
                 speak("what is the message will be?")
                 my_msg = input('Enter Your Message: ')
-                # speak("if you want to send the message imediately?")
-                # query=takeCommand()
-                # if 'yeah' in query:
+               
                 instant_msgTo_Whatsapp(person_name=person_name,my_msg=my_msg)
                 print("Your message is sending....")
-                # elif 'yes' in query:
-                #     instant_msgTo_Whatsapp(person_name=person_name,my_msg=my_msg)
-                #     print("Your message is sending....")
-                # elif 'no' in query:
-                #     speak("set the time (Hour:Miutes)")
-                #     hour=int(input("enter the time in hours=>"))
-                #     minutes= int(input("enter the time in minutes=>"))
-                #     pywhatkit.sendwhatmsg(phone_no=mobile_number,message=whatsMsg,time_hour=hour,time_min=minutes)
-
-
+                
             except Exception as e:
                 print(e)
                 speak("sorry my friend samrat . I am not able to send this whatsapp message")
